@@ -1,0 +1,76 @@
+{
+	"pages": [
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "古代战争火箭辅助"
+			}
+		},
+		{
+			"path": "pages/immediate/immediate",
+			"style": {
+				"navigationBarTitleText": "古代战争火箭辅助"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/description/description",
+			"style": {
+				"navigationBarTitleText": "购买说明"
+			}
+		},
+		{
+			"path": "pages/update/update",
+			"style": {
+				"navigationBarTitleText": "更新",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/transfer/transfer",
+			"style": {
+				"navigationBarTitleText": "辅助帐号转移"
+			}
+		}
+    ],
+	"tabBar": {
+		"color": "#7a7e83",
+		"selectedColor": "#007aff",
+		"backgroundColor": "#ffffff",
+		"list": [{
+		    "pagePath": "pages/home/home",
+		    "text": "云挂机",
+		    "iconPath": "static/img/home.png",
+		    "selectedIconPath": "static/img/homeHL.png"
+		},
+		{
+			"pagePath": "pages/immediate/immediate",
+			"text": "即时版",
+			"iconPath": "static/img/immediate.png",
+			"selectedIconPath": "static/img/immediateHL.png"
+		},
+		{
+		    "pagePath": "pages/description/description",
+		    "text": "功能说明",
+		    "iconPath": "static/img/orders.png",
+		    "selectedIconPath": "static/img/ordersHL.png"
+		},
+		{
+		    "pagePath": "pages/update/update",
+		    "text": "更新",
+		    "iconPath": "static/img/upgrade.png",
+		    "selectedIconPath": "static/img/upgradeHL.png"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#FFFFFF"
+	}
+}

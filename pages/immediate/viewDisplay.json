@@ -1,0 +1,54 @@
+{
+  "gameInfoConfig": [
+    {"label": "角色信息", "key": "roleInfoConfig"}
+  ],
+  "roleInfoConfig": [
+    {"label": "角色：", "key": "name"},
+    {"label": "等级：", "key": "level"},
+    {"label": "推图关卡：", "key": "levelIdStr"},
+    {"label": "血精：", "key": "xuejing"},
+    {"label": "钻石：", "key": "zuanshi"},
+    {"label": "无尽关卡：", "key": "wujinLevelId"},
+    {"label": "金币：", "key": "jinbi"},
+    {"label": "无尽币：", "key": "wujingbi"},
+    {"label": "神器碎片：", "key": "shenqisuipian"},
+    {"label": "熔炼：", "key": "ronglian"},
+    {"label": "远征币：", "key": "yuanzhengbi"},
+    {"label": "套装碎片：", "key": "taozhuangsuipian"},
+    {"label": "羁绊：", "key": "jiban"},
+    {"label": "竞技币：", "key": "rongyu"},
+    {"label": "蜡像币：", "key": "laxiangbi"}
+  ],
+  "roleInfoDefault": {
+    "name": "",
+    "level": "",
+    "levelIdStr": "",
+    "xuejing": "",
+    "zuanshi": "",
+    "wujinLevelId": "",
+    "jinbi": "",
+    "wujingbi": "",
+    "shenqisuipian": "",
+    "ronglian": "",
+    "yuanzhengbi": "",
+    "taozhuangsuipian": "",
+    "jiban": "",
+    "rongyu": "",
+    "laxiangbi": ""
+  },
+  "options": {
+    "emeFubenList": [
+      {"value": 1,"text": "美女副本-经验书"},
+      {"value": 2,"text": "亡灵副本-套装碎片"},
+      {"value": 3,"text": "恶魔副本-神器碎片"}
+    ],
+    "meiriFubenList": [
+      {"value": 1 , "text": "金币副本"},
+      {"value": 2 , "text": "经验副本"},
+      {"value": 3 , "text": "羁绊副本"},
+      {"value": 4 , "text": "熔炼副本"},
+      {"value": 5 , "text": "药材副本"},
+      {"value": 6 , "text": "血精副本"}
+    ]
+  }
+}

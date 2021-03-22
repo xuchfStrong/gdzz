@@ -1,0 +1,17 @@
+{
+  "name": "jqcm-uni",
+  "version": "1.4.0",
+  "description": "古代战争Helper的uni版本",
+  "author": "xuchangfan",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "fucking-util": "^0.3.0",
+    "fucking-util-signature-all": "^0.1.1",
+    "install": "^0.13.0",
+    "js-rsa": "^1.0.2",
+    "jsencrypt": "^3.1.0",
+    "moment": "^2.24.0",
+    "vue-clipboard2": "^0.3.1"
+  },
+  "devDependencies": {}
+}
