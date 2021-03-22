@@ -168,7 +168,6 @@ export default {
 			const ts = new Date().getTime()
 			const keyTime = parseInt(ts/1000)
 			let passwordLogin = '123456'
-			console.log('loginType',this.userInfo.loginType ,this.userInfo.loginType === 1)
 			if (this.userInfo.loginType === 1) {
 				passwordLogin = this.userInfo.passwordPlatForm
 			}
