@@ -1,5 +1,5 @@
 {
-  "version": 200,
+  "version": 201,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -31,7 +31,10 @@
   "pickerSwitchConfig": [
     {"label": "购买天赋次数", "key": "buy_tianfu"},
     {"label": "打竞技场战力低多少的对手", "key": "jjc_discount"},
-    {"label": "家园育种类型", "key": "yuzhong_type"}
+    {"label": "家园育种类型1", "key": "yuzhong_type"},
+		{"label": "家园育种类型2", "key": "yuzhong_type2"},
+		{"label": "家园育种类型3", "key": "yuzhong_type3"},
+		{"label": "家园育种类型4", "key": "yuzhong_type4"}
   ],
   "gameInfoConfig": [
     {"label": "角色信息", "key": "roleInfoConfig"},
@@ -105,7 +108,10 @@
     "jjc_refesh": 0,
     "buy_tianfu": 0,
     "jjc_discount":3,
-    "yuzhong_type": 0
+    "yuzhong_type": 0,
+		"yuzhong_type2": 0,
+		"yuzhong_type3": 0,
+		"yuzhong_type4": 0
   },
   "roleInfoDefault": {
     "userid": "",
@@ -177,6 +183,36 @@
       {"value": 5,"text": "无尽"},
       {"value": 6,"text": "蜡像"},
       {"value": 7,"text": "血精"}
-    ]
+    ],
+		"yuzhong_type2": [
+		  {"value": 0,"text": "关闭家园育种"},
+		  {"value": 1,"text": "金币"},
+		  {"value": 2,"text": "熔炼"},
+		  {"value": 3,"text": "羁绊"},
+		  {"value": 4,"text": "钻石"},
+		  {"value": 5,"text": "无尽"},
+		  {"value": 6,"text": "蜡像"},
+		  {"value": 7,"text": "血精"}
+		],
+		"yuzhong_type3": [
+		  {"value": 0,"text": "关闭家园育种"},
+		  {"value": 1,"text": "金币"},
+		  {"value": 2,"text": "熔炼"},
+		  {"value": 3,"text": "羁绊"},
+		  {"value": 4,"text": "钻石"},
+		  {"value": 5,"text": "无尽"},
+		  {"value": 6,"text": "蜡像"},
+		  {"value": 7,"text": "血精"}
+		],
+		"yuzhong_type4": [
+		  {"value": 0,"text": "关闭家园育种"},
+		  {"value": 1,"text": "金币"},
+		  {"value": 2,"text": "熔炼"},
+		  {"value": 3,"text": "羁绊"},
+		  {"value": 4,"text": "钻石"},
+		  {"value": 5,"text": "无尽"},
+		  {"value": 6,"text": "蜡像"},
+		  {"value": 7,"text": "血精"}
+		]
   }
 }
