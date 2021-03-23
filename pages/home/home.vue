@@ -990,6 +990,7 @@ export default {
 }
 .content-wrap {
 	user-select: text;
+	word-break: break-all;
 }
 .fuzhu-info {
 	display: flex;
