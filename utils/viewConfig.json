@@ -11,7 +11,7 @@
     {"label": "自动炼药", "key": "caoyao_lianzhi"},
     {"label": "自动探索", "key": "is_tansuo"},
     {"label": "自动冒险小队", "key": "is_maoxianxiaodui"},
-    {"label": "自动推图", "key": "is_boss_fuben"},
+    {"label": "自动挑战BOSS", "key": "is_boss_fuben"},
     {"label": "自动无尽炼狱", "key": "is_wujing_fuben"},
     {"label": "自动不朽丰碑", "key": "is_buxiufengbei"},
     {"label": "自动购买金币商店", "key": "is_jinbishop"},
