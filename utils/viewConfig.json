@@ -1,5 +1,5 @@
 {
-  "version": 201,
+  "version": 203,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -26,7 +26,9 @@
     {"label": "每日副本血精次数购买", "key": "is_buy_meiri_xuejing"},
     {"label": "蜡像馆次数购买", "key": "is_buy_laxiangguan"},
     {"label": "21:00后自动扫荡所有副本", "key": "is_saodang"},
-		{"label": "21:00后自动挑战剩余竞技场次数", "key": "jjc_refesh"}
+		{"label": "21:00后自动挑战剩余竞技场次数", "key": "jjc_refesh"},
+		{"label": "自动模拟战", "key": "is_monizhan"},
+		{"label": "模拟战自动买保险", "key": "buy_monizhan_baoxian"}
   ],
   "pickerSwitchConfig": [
     {"label": "购买天赋次数", "key": "buy_tianfu"},
@@ -111,7 +113,9 @@
     "yuzhong_type": 0,
 		"yuzhong_type2": 0,
 		"yuzhong_type3": 0,
-		"yuzhong_type4": 0
+		"yuzhong_type4": 0,
+		"is_monizhan": 0,
+		"buy_monizhan_baoxian": 0
   },
   "roleInfoDefault": {
     "userid": "",
