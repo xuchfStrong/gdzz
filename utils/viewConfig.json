@@ -1,5 +1,5 @@
 {
-  "version": 203,
+  "version": 205,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -186,7 +186,10 @@
       {"value": 4,"text": "钻石"},
       {"value": 5,"text": "无尽"},
       {"value": 6,"text": "蜡像"},
-      {"value": 7,"text": "血精"}
+      {"value": 7,"text": "血精"},
+      {"value": 8,"text": "迷宫"},
+      {"value": 9,"text": "套装"},
+      {"value": 10,"text": "神器"}
     ],
 		"yuzhong_type2": [
 		  {"value": 0,"text": "关闭家园育种"},
@@ -196,7 +199,10 @@
 		  {"value": 4,"text": "钻石"},
 		  {"value": 5,"text": "无尽"},
 		  {"value": 6,"text": "蜡像"},
-		  {"value": 7,"text": "血精"}
+		  {"value": 7,"text": "血精"},
+		  {"value": 8,"text": "迷宫"},
+		  {"value": 9,"text": "套装"},
+		  {"value": 10,"text": "神器"}
 		],
 		"yuzhong_type3": [
 		  {"value": 0,"text": "关闭家园育种"},
@@ -206,7 +212,10 @@
 		  {"value": 4,"text": "钻石"},
 		  {"value": 5,"text": "无尽"},
 		  {"value": 6,"text": "蜡像"},
-		  {"value": 7,"text": "血精"}
+		  {"value": 7,"text": "血精"},
+		  {"value": 8,"text": "迷宫"},
+		  {"value": 9,"text": "套装"},
+		  {"value": 10,"text": "神器"}
 		],
 		"yuzhong_type4": [
 		  {"value": 0,"text": "关闭家园育种"},
@@ -216,7 +225,10 @@
 		  {"value": 4,"text": "钻石"},
 		  {"value": 5,"text": "无尽"},
 		  {"value": 6,"text": "蜡像"},
-		  {"value": 7,"text": "血精"}
+		  {"value": 7,"text": "血精"},
+		  {"value": 8,"text": "迷宫"},
+		  {"value": 9,"text": "套装"},
+		  {"value": 10,"text": "神器"}
 		]
   }
 }
