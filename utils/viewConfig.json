@@ -1,5 +1,5 @@
 {
-  "version": 205,
+  "version": 208,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -33,6 +33,7 @@
   "pickerSwitchConfig": [
     {"label": "购买天赋次数", "key": "buy_tianfu"},
     {"label": "打竞技场战力低多少的对手", "key": "jjc_discount"},
+		{"label": "快速战斗次数", "key": "kuaisuzhandou_times"},
     {"label": "家园育种类型1", "key": "yuzhong_type"},
 		{"label": "家园育种类型2", "key": "yuzhong_type2"},
 		{"label": "家园育种类型3", "key": "yuzhong_type3"},
@@ -115,7 +116,8 @@
 		"yuzhong_type3": 0,
 		"yuzhong_type4": 0,
 		"is_monizhan": 0,
-		"buy_monizhan_baoxian": 0
+		"buy_monizhan_baoxian": 0,
+		"kuaisuzhandou_times": 0
   },
   "roleInfoDefault": {
     "userid": "",
@@ -178,6 +180,19 @@
       {"value": 4,"text": "低40%"},
       {"value": 5,"text": "低50%"}
     ],
+		"kuaisuzhandou_times": [
+		  {"value": 0,"text": "关闭自动快速战斗"},
+		  {"value": 1,"text": "1次"},
+		  {"value": 2,"text": "2次"},
+		  {"value": 3,"text": "3次"},
+		  {"value": 4,"text": "4次"},
+		  {"value": 5,"text": "5次"},
+		  {"value": 6,"text": "6次"},
+		  {"value": 7,"text": "7次"},
+		  {"value": 8,"text": "8次"},
+		  {"value": 9,"text": "9次"},
+		  {"value": 10,"text": "10次"}
+		],
     "yuzhong_type": [
       {"value": 0,"text": "关闭家园育种"},
       {"value": 1,"text": "金币"},
