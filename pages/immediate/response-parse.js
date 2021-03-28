@@ -361,7 +361,7 @@ export function shilianchou(obj) {
 export function calcZhanli(obj) {
   const heros = obj.heros
   let zhanli = 0
-  if (heros.length <= 6) {
+  if (heros.length <= 6 && heros.length > 1) {
     heros.forEach(element => {
       zhanli += element.zhanli
     })

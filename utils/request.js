@@ -89,7 +89,6 @@ http.interceptor.response(async (response) => { /* 请求之后拦截器 */
   // }
   return response.data
 }, (response) => { // 请求错误做点什么
-  console.log(response);
   return response
 })
 

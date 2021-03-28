@@ -429,6 +429,7 @@ export default {
         jiban: '',
         laxiangbi: '', // 蜡像币
         zhanli: 0, // 战力
+        roleId: '',
         zhuangbeiList: [] // 计算后的，装备列表，用于升级
       },
       userInfo: {
@@ -946,6 +947,7 @@ export default {
         this.roleInfo.rongyu = redata.rongyu
         this.roleInfo.jiban = redata.jiban
         this.roleInfo.laxiangbi = redata.o
+        this.roleInfo.roleId = redata.b
         this.jjcInfo.jjcTime = redata.jjcTime
         // this.recordLogs('当前经验：' + redata.i)
       }
@@ -1065,6 +1067,10 @@ export default {
         this.shopInfo.allInfo = redata
         this.shopInfo.jinbiShuaXin = redata.jinbiShuaXin
         this.shopInfo.hadBuyJinbi = hadBuyInfo(redata).hadBuyJinbi
+      }
+
+      if (redata.pd === 1068) { // 冒险小队信息
+        this.calcZhanliFromXiaodui(redata)
       }
 
       // 每日副本信息
@@ -1286,6 +1292,16 @@ export default {
       this.flag.logoutFlag = true
       this.recordLogs('退出登录')
       this.socketTask.close()
+    },
+
+    // 从小队信息计算角色战力
+    calcZhanliFromXiaodui(resdata) {
+      if (!this.roleInfo.roleId) return
+      resdata.f.forEach(role => {
+        if (role.a === this.roleInfo.roleId) {
+          this.roleInfo.zhanli = role.d
+        }
+      })
     },
 
     // 通用发包,很多请求发送后都需要发一次该通用包
