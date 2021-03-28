@@ -23,6 +23,7 @@
           <a v-if="saleChannel==='7'" :href="update.pkgUrl7"><text>点击下载辅助APP</text></a>
           <a v-if="saleChannel==='8'" :href="update.pkgUrl8"><text>点击下载辅助APP</text></a>
           <a v-if="saleChannel==='10'" :href="update.pkgUrl10"><text>点击下载辅助APP</text></a>
+          <a v-if="saleChannel==='11'" :href="update.pkgUrl11"><text>点击下载辅助APP</text></a>
           <!-- <button type="primary" @tap="downloadImage">下载</button> -->
         </view>
 

@@ -195,7 +195,7 @@ export function getChannel() {
   // #endif
   // #ifdef H5
   const channelMap = {
-    "8080": "10",
+    "8080": "11",
     "13200": "test",
     "13201": "1",
     "13202": "2",
@@ -207,6 +207,7 @@ export function getChannel() {
     "13208": "8",
     "13209": "9",
     "13210": "10",
+    "13211": "11"
   }
   const port = window.location.port
   return channelMap[port]

@@ -67,6 +67,7 @@
 		<text v-if="utils.showContact7&&saleChannel === '7'" class="waring-wrap">{{ utils.contact7 }}</text>
 		<text v-if="utils.showContact8&&saleChannel === '8'" class="waring-wrap">{{ utils.contact8 }}</text>
 		<text v-if="utils.showContact10&&saleChannel === '10'" class="waring-wrap">{{ utils.contact10 }}</text>
+		<text v-if="utils.showContact11&&saleChannel === '11'" class="waring-wrap">{{ utils.contact11 }}</text>
 		
 		
 		<view class="uni-divider">
