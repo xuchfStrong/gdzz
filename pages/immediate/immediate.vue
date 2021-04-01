@@ -403,6 +403,7 @@ export default {
       timeDiff: 0,
       socketTask: null,
       pIn: 0,
+      keyCode: 'askj8789kldksiewkszkm2323lkkl',
       viewDisplay: {},
       options: {},
       scrollTop: 999,
@@ -782,6 +783,19 @@ export default {
 				this.platformName = gameLoginInfo.platformName
 				this.flag.showServer = gameLoginInfo.showServer
 				this.serverInfo = gameLoginInfo.serverInfo
+        this.initSaveData()
+			}
+		},
+
+    // 加载后将存储的数据显示出来
+		initSaveData() {
+			const lastServerIndex = getIndexByValue(this.serverInfo.last_server_list, this.userInfo.server)
+			if (lastServerIndex !== -1) {
+				this.serverName = this.serverInfo.last_server_list[lastServerIndex].text
+				this.lastServerIndex = lastServerIndex
+        this.userInfo.wsUrl = this.serverInfo.last_server_list[this.lastServerIndex].server_url
+			} else {
+				this.serverName = ''
 			}
 		},
 
@@ -840,7 +854,7 @@ export default {
     // 获取服务器时间用于校对
     getServerTime() {
       serverTime().then(res => {
-        const serverTime = res.data.serverTime
+        serverTime = res.data.serverTime
         const localTime = new Date().getTime()
         this.timeDiff = serverTime - localTime
       })
@@ -950,6 +964,12 @@ export default {
         this.roleInfo.roleId = redata.b
         this.jjcInfo.jjcTime = redata.jjcTime
         // this.recordLogs('当前经验：' + redata.i)
+      }
+
+      if (redata.pd === 1006) { // 服务器返回的keyCode和serverTime
+        this.keyCode = redata.b
+        const localTime = new Date().getTime()
+        this.timeDiff = redata.a - localTime
       }
 
       if (redata.pd === 1007) { // 装备列表
@@ -1198,6 +1218,7 @@ export default {
       for (const key in this.flag) {
         this.flag[key] = false
       }
+      this.logout()
       this.pIn = 0
       this.flag.loginFlag = false
     },
@@ -1207,7 +1228,7 @@ export default {
       const localTime = new Date().getTime()
       const correctTime = localTime + this.timeDiff
       const keytime = parseInt(correctTime / 1000)
-      const str = 'askj8789kldksiewkszkm2323lkkl' + keytime
+      const str = this.keyCode + keytime
       const hashStr =  CryptoJS.SHA1(str).toString()
 			const key = hashStr.slice(0,6).toLocaleUpperCase()
       // const key = SHA1(str).toUpperCase().substr(0, 6)
@@ -1295,9 +1316,9 @@ export default {
     },
 
     // 从小队信息计算角色战力
-    calcZhanliFromXiaodui(resdata) {
+    calcZhanliFromXiaodui(redata) {
       if (!this.roleInfo.roleId) return
-      resdata.f.forEach(role => {
+      redata.f.forEach(role => {
         if (role.a === this.roleInfo.roleId) {
           this.roleInfo.zhanli = role.d
         }
@@ -2448,7 +2469,7 @@ export default {
 	margin-left:40upx;
 }
 .scroll-Y {
-	height: 350rpx;
+	height: 550rpx;
   border: 2upx solid #eee;
   font-size: 20upx;
   padding-bottom: 30upx;

@@ -602,14 +602,16 @@ export default {
 							duration: 2000,
 							icon: 'none'
 						})
-            break
+            return
           case 404:
 						this.flag.saveRoleFlag = false
 						this.roleInfo = Object.assign({}, getApp().globalData.viewConfig.roleInfoDefault)
-						if (this.fuzhuStatus.fuzhu_vip) {
+						if (!this.fuzhuStatus.on_off) {
 							this.$toast('未查询到挂机信息，请开启云挂机')
+						} else {
+							this.$toast('未查询到挂机信息，请检查所选区服是否正确')
 						}
-            break
+						return
         }
       }).catch(err => {
 				this.flag.saveRoleFlag = false
@@ -617,7 +619,7 @@ export default {
 				toast("查询失败，请稍后重试")
         console.log(err)
       })
-      this.handleGetConfigInfo()
+			this.handleGetConfigInfo()
 			this.handleCheckStatus()
     },
 
@@ -651,11 +653,11 @@ export default {
 						})
             break
           case 404:
-						uni.showToast({
-							title: '未查询到挂机信息，请开启云挂机',
-							duration: 2000,
-							icon: 'none'
-						})
+						if (!this.fuzhuStatus.on_off) {
+							this.$toast('未查询到挂机信息，请开启云挂机')
+						} else {
+							this.$toast('未查询到挂机信息，请检查所选区服是否正确')
+						}
             this.configInfo = Object.assign({}, this.viewConfig.configInfoDefault)
             break
         }
