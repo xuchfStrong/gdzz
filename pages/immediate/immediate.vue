@@ -59,7 +59,8 @@
             <text>推图副本挑战</text>
           </view>
           <view class="attr-flex-item">
-            <uni-number-box :value="attackTime.bossTime" :max="5000" @change="changeNumberInput($event,'tuituBoss')"></uni-number-box>
+            <text class="tips">已经失败{{ bossAttackTime }}次</text>
+            <uni-number-box :value="attackTime.bossTime" :max="200" @change="changeNumberInput($event,'tuituBoss')"></uni-number-box>
           </view>
           <view class="attr-flex-item-button">
             <button v-if="!flag.tuituFlag" type="primary" size="mini" @tap="startFubenBoss">开始</button>
@@ -67,7 +68,7 @@
           </view>
         </view>
 
-        <view class="attr-flex">
+        <!-- <view class="attr-flex">
           <view class="attr-flex-item-title">
             <text>推图副本小怪</text>
           </view>
@@ -76,16 +77,17 @@
           </view>
           <view class="attr-flex-item-button">
             <button v-if="!flag.xiaoguaiFlag" type="primary" size="mini" @tap="startFubenXiaoguai">开始</button>
-            <button v-else type="warn" size="mini" @tap="startFubenXiaoguai">停止</button>
+            <button v-else type="warn" size="mini" @tap="stopFubenXiaoguai">停止</button>
           </view>
-        </view>
+        </view> -->
 
         <view class="attr-flex">
           <view class="attr-flex-item-title">
             <text>无尽炼狱挑战</text>
           </view>
           <view class="attr-flex-item">
-            <uni-number-box :value="attackTime.wujinTime" :max="5000" @change="changeNumberInput($event,'wujin')"></uni-number-box>
+            <text class="tips">已经失败{{ wujinAttackTime }}次</text>
+            <uni-number-box :value="attackTime.wujinTime" :max="200" @change="changeNumberInput($event,'wujin')"></uni-number-box>
           </view>
           <view class="attr-flex-item-button">
             <button v-if="!flag.wujinFlag" type="primary" size="mini" @tap="startWujin">开始</button>
@@ -192,7 +194,7 @@
 
         <view class="attr-flex">
           <view class="attr-flex-item-title">
-            <text>世界BOSS挑战</text>
+            <text>不朽丰碑挑战</text>
           </view>
           <view class="attr-flex-item">
             <text class="tips"><span>剩余{{ taskInfo.bossCanAttackTime }}次</span></text>
@@ -402,6 +404,8 @@ export default {
 			serverName: '',
       timeDiff: 0,
       socketTask: null,
+      bossAttackTime: -1,
+      wujinAttackTime: -1,
       pIn: 0,
       keyCode: 'askj8789kldksiewkszkm2323lkkl',
       viewDisplay: {},
@@ -526,8 +530,8 @@ export default {
       },
       taskInfo: { // 每天的各种任务信息
         xuezhanRemainTime: 0, // 血战竞技剩余次数
-        bossAttackTime: 0, // 世界BOSS攻击次数
-        bossCanAttackTime: 0 // 世界BOSS剩余次数
+        bossAttackTime: 0, // 不朽丰碑攻击次数
+        bossCanAttackTime: 0 // 不朽丰碑剩余次数
       },
       buyInfo: {
         laxiangguanBuyTime: 1, // 蜡像馆的购买次数
@@ -716,7 +720,7 @@ export default {
   watch: {
     logs(newVal) {
       this.changeGuajiLog(newVal)
-      this.scrollToBottom()
+      // this.scrollToBottom()
     },
   },
   onLoad() {
@@ -875,7 +879,9 @@ export default {
       if (this.logs.length > 1000) {
         this.logs.shift()
       }
-      this.logs.push('\n' + d + ':' + log)
+      const logstr = d + ':' + log + '\n'
+      this.logs.splice(0,0,logstr)
+      // this.logs.push('\n' + d + ':' + log)
     },
 
     // 清理日志
@@ -979,6 +985,7 @@ export default {
 
       if (redata.pd === 1008) {
         this.roleInfo.levelId = redata.openLevel
+        this.bossAttackTime = redata.attackTime
       }
 
       if (redata.pd === 1012) { // 计算竞技场的角色信息
@@ -1073,7 +1080,7 @@ export default {
         }
       }
 
-      if (redata.pd === 1023) { // 世界BOSS攻击次数
+      if (redata.pd === 1023) { // 不朽丰碑攻击次数
         this.taskInfo.bossAttackTime = redata.todayAttackTimes
         this.taskInfo.bossCanAttackTime = 3 - redata.todayAttackTimes
       }
@@ -1118,6 +1125,7 @@ export default {
       // 无尽炼狱信息
       if (redata.pd === 1080) {
         this.roleInfo.wujinLevelId = redata.level
+        this.wujinAttackTime = redata.attackTime
       }
 
       // 恶魔巢穴信息
@@ -1180,7 +1188,7 @@ export default {
             this.recordLogs(log)
             break
           case 10:
-            log = shijieboss(redata) // 世界BOSS结果
+            log = shijieboss(redata) // 不朽丰碑结果
             this.recordLogs(log)
             break
           case 16:
@@ -1291,17 +1299,46 @@ export default {
       login_packet6.rank = 0
       // 第八个包
       const login_packet7 = this.gen_base_json(2)
+      // 第9个包
+      const login_packet9 = this.gen_base_json(293)
+      login_packet9["operate"] = 5
+      login_packet9["rank"] = 0
+      login_packet9["rmb"] = ""
+      login_packet9["roleId"] = 0
+      // 第10个包
+      const login_packet10 = this.gen_base_json(293)
+      login_packet10["operate"] = 3
+      login_packet10["rank"] = 0
+      login_packet10["rmb"] = ""
+      login_packet10["roleId"] = 0
+      // 第11个包
+      const login_packet11 = this.gen_base_json(303)
+      // 第12个包
+      const login_packet12 = this.gen_base_json(301)
+      login_packet12["operate"] = 3
+      login_packet12["rank"] = 0
+      login_packet12["rmb"] = ""
+      login_packet12["roleId"] = 0
+      // 第13个包
+      const login_packet13 = this.gen_base_json(300)
+      login_packet13["operate"] = 4
+		  login_packet13["id"] = 0
       const self = this
       setTimeout(function() { self.websocketsend(login_packet) }, 100)
-      setTimeout(function() { self.websocketsend(login_packet1) }, 200)
-      setTimeout(function() { self.websocketsend(login_packet2) }, 300)
-      setTimeout(function() { self.websocketsend(login_packet3) }, 400)
-      setTimeout(function() { self.websocketsend(login_packet4) }, 600)
-      setTimeout(function() { self.websocketsend(login_packet5) }, 700)
-      setTimeout(function() { self.websocketsend(login_packet6) }, 800)
-      setTimeout(function() { self.websocketsend(login_packet7) }, 900)
-      setTimeout(function() { self.sendGeneric() }, 950)
-      setTimeout(function() { self.fuben(0, 5, 0) }, 990) // 发这个包就会进行上线确认
+      setTimeout(function() { self.websocketsend(login_packet1) }, 150)
+      setTimeout(function() { self.websocketsend(login_packet2) }, 200)
+      setTimeout(function() { self.websocketsend(login_packet3) }, 250)
+      setTimeout(function() { self.websocketsend(login_packet4) }, 300)
+      setTimeout(function() { self.websocketsend(login_packet5) }, 350)
+      setTimeout(function() { self.websocketsend(login_packet6) }, 400)
+      setTimeout(function() { self.websocketsend(login_packet7) }, 450)
+      setTimeout(function() { self.websocketsend(login_packet9) }, 500)
+      setTimeout(function() { self.websocketsend(login_packet10) }, 550)
+      setTimeout(function() { self.websocketsend(login_packet11) }, 600)
+      setTimeout(function() { self.websocketsend(login_packet12) }, 650)
+      setTimeout(function() { self.websocketsend(login_packet13) }, 700)
+      setTimeout(function() { self.sendGeneric() }, 750)
+      setTimeout(function() { self.fuben(0, 5, 0) }, 800) // 发这个包就会进行上线确认
       // if (this.userRole.userLevelId <= 2) {
       //   setTimeout(function() { self.fuben(0, 5, 0) }, 990) // 发这个包就会进行上线确认
       // }
@@ -1356,6 +1393,10 @@ export default {
         toast('等待获取当前关卡数')
         return
       }
+      if (this.bossAttackTime > 290) {
+        toast('挑战BOSS失败次数达到上限，无法继续挑战')
+        return
+      }
       this.flag.tuituFlag = true
       let i = 1
       const bossTime = this.attackTime.bossTime
@@ -1367,7 +1408,7 @@ export default {
         if (i > bossTime) {
           self.stopFubenBoss()
         }
-      }, 500)
+      }, 1000)
     },
 
     // 停止打BOSS
@@ -1427,6 +1468,10 @@ export default {
         toast('等待获取当前关卡信息')
         return
       }
+      if (this.wujinAttackTime > 270) {
+        toast('无尽挑战失败次数达到上限，无法继续挑战')
+        return
+      }
       this.flag.wujinFlag = true
       let i = 1
       const wujinTime = this.attackTime.wujinTime
@@ -1435,10 +1480,11 @@ export default {
         self.recordLogs('挑战无尽炼狱第' + self.attackWujinLevelId + '关')
         self.sendWujin(2)
         i++
+        self.wujinAttackTime++
         if (i > wujinTime) {
           self.stopWujin()
         }
-      }, 500)
+      }, 1000)
     },
 
     // 停止无尽炼狱
@@ -1953,8 +1999,8 @@ export default {
     },
 
     /**
-     * 世界BOSS发包
-     * @param {Number} operate 1为点开世界BOSS界面，2为确认领取挑战的奖励，3为挑战，4为领奖
+     * 不朽丰碑发包
+     * @param {Number} operate 1为点开不朽丰碑界面，2为确认领取挑战的奖励，3为挑战，4为领奖
      */
     sendShijieBoss(operate) {
       const shijieBOssPacket = this.gen_base_json(10)
@@ -1962,15 +2008,15 @@ export default {
       this.websocketsend(shijieBOssPacket)
       if (operate === 3) {
         this.sendGeneric()
-        this.recordLogs('挑战世界BOSS')
+        this.recordLogs('挑战不朽丰碑')
       }
     },
 
-    // 开始世界BOSS
+    // 开始不朽丰碑
     startShiJieBOSS() {
       if (!this.checkLoginStatus()) return
       if (this.taskInfo.bossAttackTime === 3) {
-        toast('世界BOSS没次数了')
+        toast('不朽丰碑没次数了')
         return
       }
       this.flag.shijieBossFlag = true
@@ -1991,7 +2037,7 @@ export default {
       }, 2000)
     },
 
-    // 停止世界BOSS
+    // 停止不朽丰碑
     stopShiJieBOSS() {
       clearInterval(this.timer.shijieBossTimer)
       this.flag.shijieBossFlag = false
