@@ -68,7 +68,7 @@
           </view>
         </view>
 
-        <!-- <view class="attr-flex">
+        <view class="attr-flex">
           <view class="attr-flex-item-title">
             <text>推图副本小怪</text>
           </view>
@@ -76,10 +76,10 @@
             <uni-number-box :value="attackTime.xiaoguaiTime" :max="5000000" @change="changeNumberInput($event,'xiaoguai')"></uni-number-box>
           </view>
           <view class="attr-flex-item-button">
-            <button v-if="!flag.xiaoguaiFlag" type="primary" size="mini" @tap="startFubenXiaoguai">开始</button>
+            <button v-if="!flag.xiaoguaiFlag" type="primary" size="mini" @tap="confirmFubenXiaoguai">开始</button>
             <button v-else type="warn" size="mini" @tap="stopFubenXiaoguai">停止</button>
           </view>
-        </view> -->
+        </view>
 
         <view class="attr-flex">
           <view class="attr-flex-item-title">
@@ -1418,9 +1418,27 @@ export default {
       this.recordLogs('停止推图')
     },
 
+    // 确认打小怪
+    confirmFubenXiaoguai() {
+      if (!this.checkLoginStatus()) return
+      const self = this
+      uni.showModal({
+				title: '提示',
+				content: '连续大量打小怪可能被检测未行为异常，有一定风险，是否开始?',
+				showCancel: true,
+				confirmText: '确定',
+				success: function (res) {
+					if (res.confirm) {
+            self.startFubenXiaoguai()
+					} else if (res.cancel) {
+						console.log('用户点击取消');
+					}
+				}
+			})
+    },
+
     // 开始小怪
     startFubenXiaoguai() {
-      if (!this.checkLoginStatus()) return
       this.flag.xiaoguaiFlag = true
       let i = 1
       const xiaoguaiTime = this.attackTime.xiaoguaiTime
