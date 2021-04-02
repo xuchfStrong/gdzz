@@ -610,7 +610,7 @@ export default {
       'fuzhuStatusGlobal'
     ]),
     guajiLog() {
-      return this.$store.state.guajiLog.join()
+      return this.$store.state.guajiLog.join('')
     },
     isPassedTwoHours() {
       const a = moment(new Date())
@@ -1405,7 +1405,7 @@ export default {
         self.recordLogs('推图第' + self.roleInfo.levelIdStr + '关')
         self.fuben(self.roleInfo.levelId, 2, 4)
         i++
-        if (i > bossTime) {
+        if (i > bossTime || self.bossAttackTime > 290) {
           self.stopFubenBoss()
         }
       }, 1000)
@@ -1486,7 +1486,7 @@ export default {
         toast('等待获取当前关卡信息')
         return
       }
-      if (this.wujinAttackTime > 270) {
+      if (this.wujinAttackTime > 290) {
         toast('无尽挑战失败次数达到上限，无法继续挑战')
         return
       }
@@ -1499,7 +1499,7 @@ export default {
         self.sendWujin(2)
         i++
         self.wujinAttackTime++
-        if (i > wujinTime) {
+        if (i > wujinTime || self.wujinAttackTime > 290) {
           self.stopWujin()
         }
       }, 1000)
