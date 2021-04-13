@@ -54,13 +54,21 @@
     <uni-segmented-control :current="currentTab" :values="items" @clickItem="onClickItem" styleType="button" activeColor="#007aff"></uni-segmented-control>
     <view class="tab-wrap">
       <view v-show="currentTab === 0">
+        <view class="description">说明：推图，小怪和无尽炼狱默认挑战间隔为10秒，可以根据自己的实际情况调整时间间隔</view>
         <view class="attr-flex">
           <view class="attr-flex-item-title">
             <text>推图副本挑战</text>
           </view>
           <view class="attr-flex-item">
             <text class="tips">已经失败{{ bossAttackTime }}次</text>
-            <uni-number-box :value="attackTime.bossTime" :max="200" @change="changeNumberInput($event,'tuituBoss')"></uni-number-box>
+            <view class="sub-flex-item">
+              <text class="tips">间隔</text>
+              <uni-number-box :value="interval.tuituBoss" :max="200" @change="changeNumberInput($event,'intervalTuituBOSS')"></uni-number-box>
+            </view>
+            <view class="sub-flex-item">
+              <text class="tips">次数</text>
+              <uni-number-box :value="attackTime.bossTime" :max="300" @change="changeNumberInput($event,'tuituBoss')"></uni-number-box>
+            </view>
           </view>
           <view class="attr-flex-item-button">
             <button v-if="!flag.tuituFlag" type="primary" size="mini" @tap="startFubenBoss">开始</button>
@@ -73,7 +81,14 @@
             <text>推图副本小怪</text>
           </view>
           <view class="attr-flex-item">
-            <uni-number-box :value="attackTime.xiaoguaiTime" :max="5000000" @change="changeNumberInput($event,'xiaoguai')"></uni-number-box>
+            <view class="sub-flex-item">
+              <text class="tips">间隔</text>
+              <uni-number-box :value="interval.xiaoguai" :max="200" @change="changeNumberInput($event,'intervalXiaoguai')"></uni-number-box>
+            </view>
+            <view class="sub-flex-item">
+              <text class="tips">次数</text>
+              <uni-number-box :value="attackTime.xiaoguaiTime" :max="5000000" @change="changeNumberInput($event,'xiaoguai')"></uni-number-box>
+            </view>
           </view>
           <view class="attr-flex-item-button">
             <button v-if="!flag.xiaoguaiFlag" type="primary" size="mini" @tap="confirmFubenXiaoguai">开始</button>
@@ -87,7 +102,14 @@
           </view>
           <view class="attr-flex-item">
             <text class="tips">已经失败{{ wujinAttackTime }}次</text>
-            <uni-number-box :value="attackTime.wujinTime" :max="200" @change="changeNumberInput($event,'wujin')"></uni-number-box>
+            <view class="sub-flex-item">
+              <text class="tips">间隔</text>
+              <uni-number-box :value="interval.wujin" :max="200" @change="changeNumberInput($event,'intervalWujin')"></uni-number-box>
+            </view>
+            <view class="sub-flex-item">
+              <text class="tips">次数</text>
+              <uni-number-box :value="attackTime.wujinTime" :max="300" @change="changeNumberInput($event,'wujin')"></uni-number-box>
+            </view>
           </view>
           <view class="attr-flex-item-button">
             <button v-if="!flag.wujinFlag" type="primary" size="mini" @tap="startWujin">开始</button>
@@ -595,6 +617,11 @@ export default {
         zbUpdateTimer: null,
         yzmgTimer: null
       },
+      interval: {
+        tuituBoss: 10,
+        wujin: 10,
+        xiaoguai: 10
+      },
       switchFlag: {
         autoGlodShop: false
       },
@@ -846,6 +873,15 @@ export default {
           break
         case 'buyLaxiangguan':
           this.attackTime.laxiangguanBuyTime = value
+          break
+        case 'intervalTuituBOSS':
+          this.interval.tuituBoss = value
+          break
+        case 'intervalWujin':
+          this.interval.wujin = value
+          break
+        case 'intervalXiaoguai':
+          this.interval.xiaoguai = value
           break
       }
     },
@@ -1401,6 +1437,8 @@ export default {
       let i = 1
       const bossTime = this.attackTime.bossTime
       const self = this
+      self.recordLogs('推图第' + self.roleInfo.levelIdStr + '关')
+      self.fuben(self.roleInfo.levelId, 2, 4)
       self.timer.bossTimer = setInterval(function() {
         self.recordLogs('推图第' + self.roleInfo.levelIdStr + '关')
         self.fuben(self.roleInfo.levelId, 2, 4)
@@ -1408,7 +1446,7 @@ export default {
         if (i > bossTime || self.bossAttackTime > 290) {
           self.stopFubenBoss()
         }
-      }, 1000)
+      }, self.interval.tuituBoss * 1000)
     },
 
     // 停止打BOSS
@@ -1443,6 +1481,8 @@ export default {
       let i = 1
       const xiaoguaiTime = this.attackTime.xiaoguaiTime
       const self = this
+      self.recordLogs('攻击小怪')
+      self.fuben(self.roleInfo.levelId, 1, 1)
       self.timer.xiaoguaiTimer = setInterval(function() {
         self.recordLogs('攻击小怪')
         self.fuben(self.roleInfo.levelId, 1, 1)
@@ -1450,7 +1490,7 @@ export default {
         if (i > xiaoguaiTime) {
           self.stopFubenXiaoguai()
         }
-      }, 500)
+      }, self.interval.xiaoguai * 1000)
     },
 
     // 停止小怪
@@ -1494,6 +1534,8 @@ export default {
       let i = 1
       const wujinTime = this.attackTime.wujinTime
       const self = this
+      self.recordLogs('挑战无尽炼狱第' + self.attackWujinLevelId + '关')
+      self.sendWujin(2)
       self.timer.wujinTimer = setInterval(function() {
         self.recordLogs('挑战无尽炼狱第' + self.attackWujinLevelId + '关')
         self.sendWujin(2)
@@ -1502,7 +1544,7 @@ export default {
         if (i > wujinTime || self.wujinAttackTime > 290) {
           self.stopWujin()
         }
-      }, 1000)
+      }, self.interval.wujin * 1000)
     },
 
     // 停止无尽炼狱
@@ -2436,6 +2478,9 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.sub-flex-item {
+  display: flex;
+}
 .attr-flex-item-button {
   display: flex;
   /* justify-content: flex-end; */
@@ -2543,6 +2588,11 @@ export default {
 }
 .tips {
   font-size: 22upx;
+}
+.description {
+  font-size: 22upx;
+  background-color: #ebedf0;
+  padding: 0 4upx;
 }
 /* .picker-text {
   font-size: 20upx;
