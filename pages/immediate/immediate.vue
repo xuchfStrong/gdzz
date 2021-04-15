@@ -54,7 +54,7 @@
     <uni-segmented-control :current="currentTab" :values="items" @clickItem="onClickItem" styleType="button" activeColor="#007aff"></uni-segmented-control>
     <view class="tab-wrap">
       <view v-show="currentTab === 0">
-        <view class="description">说明：推图，小怪和无尽炼狱默认挑战间隔为10秒，可以根据自己的实际情况调整时间间隔</view>
+        <view class="description">说明：推图，小怪和无尽炼狱默认挑战间隔为10秒，可以根据自己的实际情况调整时间间隔。间隔设置太短可能被游戏检测到用辅助推图。</view>
         <view class="attr-flex">
           <view class="attr-flex-item-title">
             <text>推图副本挑战</text>
@@ -63,7 +63,7 @@
             <text class="tips">已经失败{{ bossAttackTime }}次</text>
             <view class="sub-flex-item">
               <text class="tips">间隔</text>
-              <uni-number-box :value="interval.tuituBoss" :max="200" @change="changeNumberInput($event,'intervalTuituBOSS')"></uni-number-box>
+              <uni-number-box :value="interval.tuituBoss" :min="1" @change="changeNumberInput($event,'intervalTuituBOSS')"></uni-number-box>
             </view>
             <view class="sub-flex-item">
               <text class="tips">次数</text>
@@ -83,7 +83,7 @@
           <view class="attr-flex-item">
             <view class="sub-flex-item">
               <text class="tips">间隔</text>
-              <uni-number-box :value="interval.xiaoguai" :max="200" @change="changeNumberInput($event,'intervalXiaoguai')"></uni-number-box>
+              <uni-number-box :value="interval.xiaoguai" :min="1" @change="changeNumberInput($event,'intervalXiaoguai')"></uni-number-box>
             </view>
             <view class="sub-flex-item">
               <text class="tips">次数</text>
@@ -104,7 +104,7 @@
             <text class="tips">已经失败{{ wujinAttackTime }}次</text>
             <view class="sub-flex-item">
               <text class="tips">间隔</text>
-              <uni-number-box :value="interval.wujin" :max="200" @change="changeNumberInput($event,'intervalWujin')"></uni-number-box>
+              <uni-number-box :value="interval.wujin" :min="1" @change="changeNumberInput($event,'intervalWujin')"></uni-number-box>
             </view>
             <view class="sub-flex-item">
               <text class="tips">次数</text>
