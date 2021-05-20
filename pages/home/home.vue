@@ -38,8 +38,8 @@
 		<view v-else>
 			<view class="btn-center btn-center-margin">
 				<view>
-					<!-- <button type="primary" plain="true" size="mini" @tap="transferTime">转移辅助</button>
-					<text style="width: 10upx; display: inline-block;"></text> -->
+					<button type="primary" plain="true" size="mini" @tap="transferTime">转移辅助</button>
+					<text style="width: 10upx; display: inline-block;"></text>
 					<button type="primary" plain="true" size="mini" @tap="loginSwitch">切换账号</button>
 					<text style="width: 10upx; display: inline-block;"></text>
 					<button type="primary" size="mini" @tap="toImmediate">即时版辅助</button>
