@@ -1,5 +1,5 @@
 {
-  "version": 210,
+  "version": 211,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -61,6 +61,7 @@
     {"label": "远征币：", "key": "yuanzhengbi"},
     {"label": "套装碎片：", "key": "taozhuangsuipian"},
     {"label": "血精：", "key": "xuejing"},
+		{"label": "羁绊：", "key": "jiban"},
     {"label": "蜡像币：", "key": "laxiangbi"}
   ],
   "taskInfoConfig": [
@@ -149,6 +150,7 @@
     "yuanzhengbi": "",
     "taozhuangsuipian": "",
     "rongyu": "",
+		"jiban": "",
     "laxiangbi": "",
     "jjcTime": "",
     "buxiufengbei_times": "",
