@@ -1,5 +1,5 @@
 {
-  "version": 211,
+  "version": 214,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -180,7 +180,17 @@
       {"value": 7,"text": "7点"},
       {"value": 8,"text": "8点"},
       {"value": 9,"text": "9点"},
-      {"value": 10,"text": "10点"}
+      {"value": 10,"text": "10点"},
+      {"value": 11,"text": "11点"},
+      {"value": 12,"text": "12点"},
+      {"value": 13,"text": "13点"},
+      {"value": 14,"text": "14点"},
+      {"value": 15,"text": "15点"},
+      {"value": 16,"text": "16点"},
+      {"value": 17,"text": "17点"},
+      {"value": 18,"text": "18点"},
+      {"value": 19,"text": "19点"},
+      {"value": 20,"text": "20点"}
     ],
     "jjc_discount": [
       {"value": 0,"text": "关闭竞技场"},
@@ -201,7 +211,17 @@
 		  {"value": 7,"text": "7次"},
 		  {"value": 8,"text": "8次"},
 		  {"value": 9,"text": "9次"},
-		  {"value": 10,"text": "10次"}
+		  {"value": 10,"text": "10次"},
+		  {"value": 11,"text": "11次"},
+		  {"value": 12,"text": "12次"},
+		  {"value": 13,"text": "13次"},
+		  {"value": 14,"text": "14次"},
+		  {"value": 15,"text": "15次"},
+		  {"value": 16,"text": "16次"},
+		  {"value": 17,"text": "17次"},
+		  {"value": 18,"text": "18次"},
+		  {"value": 19,"text": "19次"},
+		  {"value": 20,"text": "20次"}
 		],
     "yuzhong_type": [
       {"value": 0,"text": "关闭家园育种"},
