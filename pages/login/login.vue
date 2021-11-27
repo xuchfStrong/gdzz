@@ -179,17 +179,18 @@ export default {
 				keyTime: keyTime
 			}
 			try {
-				// #ifdef APP-PLUS
 				const res = await loginGame(params)
-				// #endif
-				// #ifdef H5
-				const uriParams = parseParams(params)
-				const loginUrl = `http://login.dgzz1.com:20002/?${uriParams}`
-				const paramProxy = {
-					url: loginUrl
-				}
-				const res = await loginByProxy(paramProxy)
-				// #endif
+				// // #ifdef APP-PLUS
+				// const res = await loginGame(params)
+				// // #endif
+				// // #ifdef H5
+				// const uriParams = parseParams(params)
+				// const loginUrl = `http://login.dgzz1.com:20002/?${uriParams}`
+				// const paramProxy = {
+				// 	url: loginUrl
+				// }
+				// const res = await loginByProxy(paramProxy)
+				// // #endif
 				if (res.state === "success") {
 					this.saveAccountList(this.userInfo.usernamePlatForm, this.userInfo.passwordPlatForm)
 					this.userInfo.userId = res.loginName

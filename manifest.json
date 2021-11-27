@@ -111,6 +111,12 @@
     "h5" : {
         "uniStatistics" : {
             "enable" : true
+        },
+        "router" : {
+            "base" : "/gdzz/"
+        },
+        "devServer" : {
+            "https" : false
         }
     },
     "channel_list" : [
