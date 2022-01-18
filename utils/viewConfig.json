@@ -1,12 +1,11 @@
 {
-  "version": 214,
+  "version": 215,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
     {"label": "自动领取邮件", "key": "is_mail"},
     {"label": "自动每日任务", "key": "is_daily_task"},
     {"label": "自动远征迷宫", "key": "is_yuanzhengmigong"},
-		{"label": "自动血战竞技", "key": "is_xuezhanjingji"},
 		{"label": "自动蜡像馆", "key": "is_laxiangguan"},
     {"label": "自动炼药", "key": "caoyao_lianzhi"},
     {"label": "自动探索", "key": "is_tansuo"},
@@ -38,6 +37,7 @@
     {"label": "购买天赋次数", "key": "buy_tianfu"},
     {"label": "打竞技场战力低多少的对手", "key": "jjc_discount"},
 		{"label": "快速战斗次数", "key": "kuaisuzhandou_times"},
+		{"label": "自动血战竞技", "key": "is_xuezhanjingji"},
     {"label": "家园育种类型1", "key": "yuzhong_type"},
 		{"label": "家园育种类型2", "key": "yuzhong_type2"},
 		{"label": "家园育种类型3", "key": "yuzhong_type3"},
@@ -200,6 +200,11 @@
       {"value": 4,"text": "低40%"},
       {"value": 5,"text": "低50%"}
     ],
+		"is_xuezhanjingji": [
+		  {"value": 0,"text": "关闭血战竞技"},
+		  {"value": 1,"text": "保护区"},
+		  {"value": 2,"text": "血战区"}
+		],
 		"kuaisuzhandou_times": [
 		  {"value": 0,"text": "关闭自动快速战斗"},
 		  {"value": 1,"text": "1次"},
