@@ -1,5 +1,5 @@
 {
-  "version": 215,
+  "version": 216,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -14,6 +14,8 @@
     {"label": "自动无尽炼狱", "key": "is_wujing_fuben"},
     {"label": "自动不朽丰碑", "key": "is_buxiufengbei"},
     {"label": "自动购买金币商店", "key": "is_jinbishop"},
+    {"label": "自动购买竞技场商店杂货", "key": "is_jjcshop"},
+    {"label": "自动购买无尽商店杂货", "key": "is_wujingshop"},
     {"label": "恶魔巢穴美女次数购买", "key": "is_buy_em_meinv"},
     {"label": "恶魔巢穴亡灵次数购买", "key": "is_buy_em_wangling"},
     {"label": "恶魔巢穴恶魔次数购买", "key": "is_buy_em_em"},
@@ -102,6 +104,8 @@
     "is_wujing_fuben": 1,
     "is_buxiufengbei": 1,
     "is_jinbishop": 1,
+    "is_jjcshop": 0,
+    "is_wujingshop": 0,
     "is_buy_em_meinv": 0,
     "is_buy_em_wangling": 0,
     "is_buy_em_em": 0,
