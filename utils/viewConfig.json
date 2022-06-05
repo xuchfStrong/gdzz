@@ -1,5 +1,5 @@
 {
-  "version": 216,
+  "version": 217,
   "switchConfig": [
     {"label": "自动领取契约", "key": "is_lingquqiyue"},
     {"label": "自动领取节日活动奖励", "key": "is_jierihuodong"},
@@ -33,7 +33,8 @@
 		{"label": "自动答题", "key": "is_dati"},
 		{"label": "自动金币兑换答题数", "key": "is_dati_buy"},
 		{"label": "自动双免BOSS", "key": "is_shuangmian_boss"},
-		{"label": "自动血战支持", "key": "is_xuezhanzhichi"}
+		{"label": "自动血战支持", "key": "is_xuezhanzhichi"},
+		{"label": "自动传奇战场", "key": "is_chuanqizhanchang"}
   ],
   "pickerSwitchConfig": [
     {"label": "购买天赋次数", "key": "buy_tianfu"},
@@ -130,7 +131,8 @@
 		"is_dati": 0,
 		"is_dati_buy": 0,
 		"is_shuangmian_boss": 0,
-		"is_xuezhanzhichi": 0
+		"is_xuezhanzhichi": 0,
+		"is_chuanqizhanchang": 0
   },
   "roleInfoDefault": {
     "userid": "",
