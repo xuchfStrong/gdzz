@@ -43,6 +43,8 @@
 							pkgUrl = data.pkgUrl11
 						} else if (saleChannel === '31') {
 							pkgUrl = data.pkgUrl31
+						} else if (saleChannel === '801') {
+							pkgUrl = data.pkgUrl801
 						}
 			      if (data.version > that.$global.fuzhuVersion && wgtUrl && data.updateType ===1 ) {  // 热更新
 								// uni.showModal({

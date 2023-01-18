@@ -2,8 +2,8 @@
     "name" : "古代战争火箭辅助",
     "appid" : "__UNI__9924290",
     "description" : "古代战争火箭辅助",
-    "versionName" : "2.0.8",
-    "versionCode" : 208,
+    "versionName" : "2.0.9",
+    "versionCode" : 209,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -171,6 +171,10 @@
         {
             "id" : "31",
             "name" : "渠道31"
+        },
+        {
+            "id" : "801",
+            "name" : "云曦801"
         }
     ]
 }

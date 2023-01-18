@@ -208,7 +208,9 @@ export function getChannel() {
     "13209": "9",
     "13210": "10",
     "13211": "11",
-		"13231": "31"
+		"13231": "31",
+		"13281": "801"
+		
   }
   const port = window.location.port
   return channelMap[port] || "test"
